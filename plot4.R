@@ -13,6 +13,9 @@ data <- subset(data, Date == '2007-02-01' | Date == '2007-02-02')
 data$day <- strftime(data$Date, format = "%A")
 
 # Plot #4
+png(file = "./figure/plot4.png", # file to be saved
+    width = 480, height = 480, # dimensions
+    pointsize = 10)
 # set the graphical parameter for 4 plots
 par(mfrow = c(2, 2))
 # place first plot from plot 2 plot.ts
@@ -54,6 +57,7 @@ box()
 # create the legend
 legend("topright", colnames(data[7:9]), # position the legended in top right
        col = c("black", "red", "blue"), # give the legend text
+       bty = "n", # didn't notice at first no box on example
        lty = c(1,1))
 # create the axis on left
 axis(side = 2) # sets the axis on bottom
@@ -73,3 +77,4 @@ axis(side = 2) # sets the axis on bottom
 # create bottom axis
 axis(side = 1, at = c(0, 1441, 2880),
      labels = c("Thur", "Fri", "Sat"))
+dev.off() # closeing for png

@@ -11,8 +11,12 @@ data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 data <- subset(data, Date == '2007-02-01' | Date == '2007-02-02')
 
 # Plot #1
+png(file = "./figure/plot1.png", # file to be saved
+    width = 480, height = 480, # dimensions
+    pointsize = 10)
 hist(data$Global_active_power,
      main = "Global Active Power",
      xlab = "Frequency",
      ylab = "Global Active Power (kilowatts)",
      col = "red1")
+dev.off() # closeing for png

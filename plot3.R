@@ -13,6 +13,9 @@ data <- subset(data, Date == '2007-02-01' | Date == '2007-02-02')
 data$day <- strftime(data$Date, format = "%A")
 
 # Plot #3
+png(file = "./figure/plot3.png", # file to be saved
+    width = 480, height = 480, # dimensions
+    pointsize = 10)
 plot.ts(data$Sub_metering_1,, col = "black",
         axes = FALSE,
         ylab = "Energy sub metering",
@@ -30,3 +33,4 @@ axis(side = 2) # sets the axis on bottom
 # create bottom axis
 axis(side = 1, at = c(0, 1441, 2880),
      labels = c("Thur", "Fri", "Sat"))
+dev.off() # closeing for png
