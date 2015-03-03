@@ -1,31 +1,31 @@
 # Assignment one plot3.R ExData_Plotting-3
 # Libraries use base
-# set working directory
-setwd("C:/Users/Marc/Personal_BTS/Coursea/Exploratory Data Analysis/Assignment_1/ExData_Plotting1/")
+# set working directory to location of file
+# file of data from https://github.com/rdpeng/ExData_Plotting1
 # read whole file (133 mb is RAM usage)
-data <- read.table("../data/household_power_consumption.txt", header = TRUE,
+e_data <- read.table("../e_data/household_power_consumption.txt", header = TRUE,
                    sep = ";", na.strings = "?")
 # set standraized date with as.Date to data$Date column
-data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
+e_data$Date <- as.Date(e_data$Date, format = "%d/%m/%Y")
 # subset with Date and use | for or for 02/01/2007 and 02/02/2007
-data <- subset(data, Date == '2007-02-01' | Date == '2007-02-02')
-# add day column to data
-data$day <- strftime(data$Date, format = "%A")
+e_data <- subset(e_data, Date == '2007-02-01' | Date == '2007-02-02')
+# add day column to e_data
+e_data$day <- strftime(e_data$Date, format = "%A")
 
 # Plot #3
 png(file = "./figure/plot3.png", # file to be saved
     width = 480, height = 480, # dimensions
     pointsize = 10)
-plot.ts(data$Sub_metering_1,, col = "black",
+plot.ts(e_data$Sub_metering_1,, col = "black",
         axes = FALSE,
         ylab = "Energy sub metering",
         xlab = NULL)
-lines(data$Sub_metering_2, col = "red")
-lines(data$Sub_metering_3, col = "blue")
+lines(e_data$Sub_metering_2, col = "red")
+lines(e_data$Sub_metering_3, col = "blue")
 # create the box
 box()
 # create the legend
-legend("topright", colnames(data[7:9]), # position the legended in top right
+legend("topright", colnames(e_data[7:9]), # position the legended in top right
        col = c("black", "red", "blue"), # give the legend text
        lty = c(1,1))
 # create the axis on left
